@@ -55,7 +55,6 @@ A user has reported that when entering an invalid phone number, they are not pro
 * Using PHPUnit tests, ensure that the jobs sent to the jobs index are paginated
 * You can use eloquent query builder pagination
 * Using jest tests, ensure that pagination links are displayed
-* You can use `react-paginate` (which is installed) to render the links
 
 ## Task 6. Add responsive styling for the jobs index and the job form
 

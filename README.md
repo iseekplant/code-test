@@ -39,7 +39,7 @@ Users can currently enter any value they wish into the phone number field. This 
 
 A user has reported that when entering an invalid phone number, they are not provided with feedback to that effect. 
 
-* Write a jest test to ensure that validation errors are displayed if the form is in an invalid state
+* Write a vitest test to ensure that validation errors are displayed if the form is in an invalid state
 * Implement a validation message
 
 ## Task 4. Update the job edit route to use a UUID in the URL instead of a job ID
@@ -48,13 +48,13 @@ A user has reported that when entering an invalid phone number, they are not pro
 * Add a migration to add a `uuid` to each `jobs` record
 * Update PHPUnit tests that route to the edit job route, to use a UUID, instead of an ID
 * Use the `uuid` as the route model binding key for the edit job route
-* Update jest tests that create links to the job edit page, to use a UUID instead of an ID
+* Update vitest tests that create links to the job edit page, to use a UUID instead of an ID
 
 ## Task 5. Add pagination to the jobs index
 
 * Using PHPUnit tests, ensure that the jobs sent to the jobs index are paginated
 * You can use eloquent query builder pagination
-* Using jest tests, ensure that pagination links are displayed
+* Using vitest tests, ensure that pagination links are displayed
 
 ## Task 6. Add responsive styling for the jobs index and the job form
 
@@ -89,4 +89,4 @@ A job should not be editable after it has been closed.
 
 * Implement a close job feature on the edit page
 * Using PHPUnit tests, prove that a closed job will not have a notification sent
-* Use jest tests to verify that a closed job is not editable, and PHPUnit tests to prove that attempts to edit a closed job will fail
+* Use vitest tests to verify that a closed job is not editable, and PHPUnit tests to prove that attempts to edit a closed job will fail

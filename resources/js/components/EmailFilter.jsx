@@ -1,9 +1,18 @@
-import {router} from '@inertiajs/react';
 import React from 'react';
+import { router } from '@inertiajs/react';
 
-const EmailFilter = ({ email }) => {
-  const refresh = (e) => {
-    router.replace(`/jobs?email=${e.target.value}`);
+const EmailFilter = ({ email = '' }) => {
+  const handleChange = (e) => {
+    const value = e.target.value;
+
+    router.get(
+      '/jobs',
+      value ? { email: value } : {}, // if empty, drop the filter
+      {
+        preserveState: true,
+        replace: true,
+      },
+    );
   };
 
   return (
@@ -11,12 +20,13 @@ const EmailFilter = ({ email }) => {
       <label htmlFor="email">Filter by email</label>
       <input
         type="text"
-        className="border px-2 py-2"
         id="email"
         name="email"
-        value={email || ''}
-        onChange={refresh}
+        className="border px-2 py-2"
+        value={email}
+        onChange={handleChange}
         autoComplete="off"
+        placeholder="Type an email to filter"
       />
     </div>
   );

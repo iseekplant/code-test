@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\AustralianPhoneNumber;
 
 class JobRequest extends FormRequest
 {
@@ -10,7 +11,7 @@ class JobRequest extends FormRequest
     {
         return [
             'contact_name' => 'required',
-            'contact_phone' => 'required',
+            'contact_phone' => ['required', new AustralianPhoneNumber()],
             'contact_email' => 'required',
             'location' => 'required',
             'details' => 'required',

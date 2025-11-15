@@ -10,7 +10,7 @@ const Create = ({ errors }) => {
 
   return (
     <Layout title="Post a Job">
-      <JobForm onSubmit={storeJob} />
+      <JobForm onSubmit={storeJob} errors={errors} />
     </Layout>
   );
 };

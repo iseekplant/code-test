@@ -30,4 +30,16 @@ describe('Jobs/Create', () => {
       details: 'I want to dig a hole.',
     });
   });
+
+  it('displays a validation error when the phone number is invalid', () => {
+    const errors = {
+      contact_phone: 'The contact phone field must be a valid Australian phone number.',
+    };
+
+    const { getByText } = render(<Create errors={errors} />);
+
+    expect(
+      getByText('The contact phone field must be a valid Australian phone number.')
+    ).toBeInTheDocument();
+  });
 });

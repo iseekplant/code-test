@@ -3,7 +3,7 @@ import Layout from '../../components/Layout';
 import { router } from '@inertiajs/react';
 import JobForm from '../../components/JobForm';
 
-const Create = ({ errors = {} }) => {
+const Create = ({ errors }) => {
   const storeJob = (data) => {
     router.post('/jobs', data);
   };

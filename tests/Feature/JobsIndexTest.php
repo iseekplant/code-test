@@ -60,4 +60,35 @@ class JobsIndexTest extends TestCase
                     'details' => 'I want to build a shed.',
                 ]));
     }
+    #[Test]
+    public function it_can_filter_jobs_by_contact_email(): void
+    {
+        // Job that SHOULD match
+        $matchingJob = Job::factory()->create([
+            'contact_name'  => 'Rod',
+            'contact_phone' => '0400000001',
+            'contact_email' => 'rod@biz.com.au',
+            'location'      => 'Brisbane',
+            'details'       => 'I want to dig a hole.',
+        ]);
+
+        // Job that SHOULD NOT match
+        $otherJob = Job::factory()->create([
+            'contact_name'  => 'Reilly',
+            'contact_phone' => '0400000002',
+            'contact_email' => 'reilly@biz.com.au',
+            'location'      => 'Cairns',
+            'details'       => 'I want to build a shed.',
+        ]);
+
+        $this->get(route('jobs.index', ['email' => 'rod@biz.com.au']))
+            ->assertSuccessful()
+            ->assertInertia(
+                fn(AssertableInertia $page) => $page
+                    ->component('Jobs/Index')
+                    ->where('email', 'rod@biz.com.au')
+                    ->count('jobs', 1)
+                    ->where('jobs.0.id', $matchingJob->id)
+            );
+    }
 }

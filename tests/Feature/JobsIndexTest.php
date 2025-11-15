@@ -17,7 +17,7 @@ class JobsIndexTest extends TestCase
     {
         $this->get(route('jobs.index'))
             ->assertSuccessful()
-            ->assertInertia(fn (AssertableInertia $page) => $page->component('Jobs/Index'));
+            ->assertInertia(fn(AssertableInertia $page) => $page->component('Jobs/Index'));
     }
 
     #[Test]
@@ -42,7 +42,7 @@ class JobsIndexTest extends TestCase
 
         $this->get(route('jobs.index'))
             ->assertSuccessful()
-            ->assertInertia(fn (AssertableInertia $page) => $page->count('jobs', 2)
+            ->assertInertia(fn(AssertableInertia $page) => $page->count('jobs', 2)
                 ->where('jobs.0', [
                     'id' => $digAHole->id,
                     'contact_name' => 'Rod',

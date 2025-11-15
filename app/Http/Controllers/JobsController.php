@@ -25,7 +25,7 @@ class JobsController extends Controller
     {
         return Inertia::render('Jobs/Index', [
             'jobs' => Job::latest()
-                ->when($request->has('emil'), fn ($query) => $query->forEmail($request->email))
+                ->when($request->has('email'), fn ($query) => $query->forEmail($request->email))
                 ->get()
                 ->map(fn (Job $job) => $job->only([
                     'id',
